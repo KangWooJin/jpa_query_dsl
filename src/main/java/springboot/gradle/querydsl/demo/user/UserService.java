@@ -11,11 +11,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class UserService {
-    private static final QUser qUser = QUser.user;
+    private final QUser qUser = QUser.user;
     private final EntityManager entityManager;
 
     public User findById(Long id) {
-        JPAQuery<User> query = new JPAQuery<>(entityManager);
+        final JPAQuery<User> query = new JPAQuery<>(entityManager);
 
         query.from(qUser)
              .where(qUser.id.eq(id));
